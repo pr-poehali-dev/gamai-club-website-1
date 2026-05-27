@@ -95,9 +95,9 @@ export default function HomePage({ server, onGoStart, onGoVideo }: HomePageProps
             <button
               className="pixel-btn text-sm"
               style={{ background: 'transparent', borderColor: color, color }}
-              onClick={() => navigator.clipboard.writeText('mc.gamai.club')}
+              onClick={onGoVideo}
             >
-              📋 Скопировать IP
+              ▶ Смотреть видео
             </button>
           </div>
 

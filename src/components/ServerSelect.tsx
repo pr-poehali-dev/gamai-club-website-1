@@ -54,7 +54,7 @@ export default function ServerSelect({ onSelect }: ServerSelectProps) {
                 : '5px 5px 0px #000',
             }}
             onClick={() => handleSelect('anarchy')}
-            onMouseEnter={() => setPaused(true)}
+            onMouseEnter={() => { setPaused(true); setHighlighted('anarchy'); }}
             onMouseLeave={() => setPaused(false)}
           >
             {highlighted === 'anarchy' && (
@@ -102,7 +102,7 @@ export default function ServerSelect({ onSelect }: ServerSelectProps) {
                 : '5px 5px 0px #000',
             }}
             onClick={() => handleSelect('classic')}
-            onMouseEnter={() => setPaused(true)}
+            onMouseEnter={() => { setPaused(true); setHighlighted('classic'); }}
             onMouseLeave={() => setPaused(false)}
           >
             {highlighted === 'classic' && (
