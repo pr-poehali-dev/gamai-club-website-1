@@ -13,26 +13,28 @@ interface NavbarProps {
 export default function Navbar({ server, onServerChange, cartCount, onCartOpen, activePage, onPageChange }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const serverColor = server === 'anarchy' ? '#ff4500' : '#4caf50';
+  const serverColor = server === 'anarchy' ? '#ff4500' : '#ff9900';
   const serverLabel = server === 'anarchy' ? '💀 Анархия' : '🌲 Классика';
 
   const navLinks = [
     { id: 'home', label: 'Главная' },
-    { id: 'shop', label: 'Магазин' },
-    { id: 'about', label: 'О проекте' },
+    { id: 'start', label: 'Начать' },
+    { id: 'video', label: 'Видео' },
     { id: 'rules', label: 'Правила' },
     { id: 'contacts', label: 'Контакты' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 border-b-2 border-border"
-      style={{ background: 'hsl(var(--background) / 0.92)', backdropFilter: 'blur(12px)' }}>
+    <nav
+      className="fixed top-0 left-0 right-0 z-40 border-b-2 border-border"
+      style={{ background: 'hsl(var(--background) / 0.92)', backdropFilter: 'blur(12px)' }}
+    >
       <div className="container flex items-center justify-between h-16">
         {/* Лого */}
         <button
           onClick={() => onPageChange('home')}
-          className="font-pixel text-sm tracking-wider pixel-text-shadow hover:opacity-80 transition-opacity"
-          style={{ color: serverColor }}
+          className="font-pixel text-sm tracking-wider hover:opacity-80 transition-opacity"
+          style={{ color: serverColor, textShadow: `0 0 15px ${serverColor}80` }}
         >
           GAMAI<br />
           <span className="text-foreground text-[10px]">CLUB</span>
@@ -71,7 +73,7 @@ export default function Navbar({ server, onServerChange, cartCount, onCartOpen, 
           {/* Корзина */}
           <button
             onClick={onCartOpen}
-            className="relative p-2 border-2 transition-all hover:scale-105"
+            className="relative p-2 border-2 transition-all hover:opacity-80"
             style={{ borderColor: serverColor, color: serverColor }}
           >
             <Icon name="ShoppingCart" size={18} />
@@ -118,7 +120,7 @@ export default function Navbar({ server, onServerChange, cartCount, onCartOpen, 
         </div>
       )}
 
-      {/* Индикатор сервера */}
+      {/* Акцентная линия */}
       <div className="h-0.5" style={{ background: `linear-gradient(90deg, transparent, ${serverColor}, transparent)` }} />
     </nav>
   );

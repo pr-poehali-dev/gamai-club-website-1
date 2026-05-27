@@ -1,17 +1,33 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 
 interface HomePageProps {
   server: 'anarchy' | 'classic';
-  onGoShop: () => void;
+  onGoStart: () => void;
+  onGoVideo: () => void;
 }
 
-export default function HomePage({ server, onGoShop }: HomePageProps) {
-  const color = server === 'anarchy' ? '#ff4500' : '#4caf50';
-  const colorSoft = server === 'anarchy' ? '#ff450020' : '#4caf5020';
+export default function HomePage({ server, onGoStart, onGoVideo }: HomePageProps) {
+  const color = server === 'anarchy' ? '#ff4500' : '#ff9900';
+  const colorSoft = server === 'anarchy' ? 'rgba(255,69,0,0.12)' : 'rgba(255,153,0,0.12)';
 
   const stats = server === 'anarchy'
     ? [{ label: 'Онлайн', value: '247', icon: '🔥' }, { label: 'Убийств', value: '128K', icon: '⚔️' }, { label: 'Взрывов', value: '12K', icon: '💥' }]
     : [{ label: 'Онлайн', value: '184', icon: '🌿' }, { label: 'Построено', value: '52K', icon: '🏗️' }, { label: 'Городов', value: '87', icon: '🏙️' }];
+
+  const features = server === 'anarchy'
+    ? [
+        { icon: '⚔️', title: 'Полный PvP', desc: 'Без защищённых зон, кроме спавна' },
+        { icon: '💣', title: 'Гриферство', desc: 'Взрывай, воруй, разрушай — всё законно' },
+        { icon: '🏆', title: 'Топ игроков', desc: 'Рейтинг убийств и побед' },
+        { icon: '⚡', title: 'TPS 20', desc: 'Стабильный сервер без лагов' },
+      ]
+    : [
+        { icon: '🏗️', title: 'Стройка', desc: 'Защищённые участки и WorldEdit' },
+        { icon: '💰', title: 'Экономика', desc: 'Магазины, торговля, аукцион' },
+        { icon: '👥', title: 'Кланы', desc: 'Создай свой город с друзьями' },
+        { icon: '🗺️', title: 'Карта мира', desc: 'Живая dynmap всего мира' },
+      ];
 
   return (
     <div className="relative z-10 min-h-screen flex flex-col">
@@ -19,18 +35,29 @@ export default function HomePage({ server, onGoShop }: HomePageProps) {
       <div className="flex-1 flex items-center justify-center pt-16">
         <div className="container text-center py-24">
 
-          {/* Бейдж сервера */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 mb-8 animate-fade-in"
-            style={{ borderColor: color, background: colorSoft }}>
-            <span className="animate-pulse" style={{ width: 8, height: 8, borderRadius: 0, background: color, display: 'inline-block' }} />
+          {/* Онлайн-бейдж */}
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 border-2 mb-8 animate-fade-in"
+            style={{ borderColor: color, background: colorSoft }}
+          >
+            <span
+              className="animate-pulse"
+              style={{ width: 8, height: 8, borderRadius: 0, background: color, display: 'inline-block' }}
+            />
             <span className="font-pixel text-[9px]" style={{ color }}>
               {server === 'anarchy' ? '💀 СЕРВЕР АНАРХИЯ ОНЛАЙН' : '🌲 СЕРВЕР КЛАССИКА ОНЛАЙН'}
             </span>
           </div>
 
-          {/* Главный заголовок */}
-          <h1 className="font-pixel text-4xl md:text-6xl lg:text-7xl pixel-text-shadow mb-4 animate-fade-in leading-tight"
-            style={{ animationDelay: '0.1s', color }}>
+          {/* Заголовок */}
+          <h1
+            className="font-pixel text-4xl md:text-6xl lg:text-7xl mb-4 animate-fade-in leading-tight"
+            style={{
+              animationDelay: '0.1s',
+              color,
+              textShadow: `2px 2px 0 #000, 0 0 40px ${color}80`,
+            }}
+          >
             GAMAI
             <br />
             <span className="text-foreground">CLUB</span>
@@ -43,8 +70,14 @@ export default function HomePage({ server, onGoShop }: HomePageProps) {
           </p>
 
           {/* Адрес сервера */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 border-2 mb-10 animate-fade-in"
-            style={{ animationDelay: '0.3s', borderColor: color, boxShadow: `0 0 20px ${color}30, 4px 4px 0 #000` }}>
+          <div
+            className="inline-flex items-center gap-3 px-6 py-3 border-2 mb-10 animate-fade-in"
+            style={{
+              animationDelay: '0.3s',
+              borderColor: color,
+              boxShadow: `0 0 20px ${color}40, 4px 4px 0 #000`,
+            }}
+          >
             <Icon name="Server" size={16} style={{ color }} />
             <span className="font-pixel text-sm tracking-wider" style={{ color }}>mc.gamai.club</span>
             <span className="font-pixel text-[9px] text-muted-foreground">1.21.1</span>
@@ -55,9 +88,9 @@ export default function HomePage({ server, onGoShop }: HomePageProps) {
             <button
               className="pixel-btn text-sm"
               style={{ background: color, borderColor: color, color: '#000' }}
-              onClick={onGoShop}
+              onClick={onGoStart}
             >
-              🛒 Магазин
+              🚀 Начать играть
             </button>
             <button
               className="pixel-btn text-sm"
@@ -81,7 +114,61 @@ export default function HomePage({ server, onGoShop }: HomePageProps) {
         </div>
       </div>
 
-      {/* Фичи */}
+      {/* Видео-превью */}
+      <div className="relative z-10 container pb-8">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-px flex-1" style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
+          <span className="font-pixel text-[10px]" style={{ color }}>ВИДЕО О СЕРВЕРЕ</span>
+          <div className="h-px flex-1" style={{ background: `linear-gradient(270deg, ${color}, transparent)` }} />
+        </div>
+
+        <button
+          onClick={onGoVideo}
+          className="group relative w-full overflow-hidden border-2 block"
+          style={{ borderColor: color, boxShadow: `0 0 30px ${color}30, 4px 4px 0 #000` }}
+        >
+          {/* Превью YouTube */}
+          <div className="relative aspect-video bg-black overflow-hidden">
+            <img
+              src={`https://img.youtube.com/vi/${server === 'anarchy' ? '-ioHuCZryTg' : '5QU20HMPZ3M'}/maxresdefault.jpg`}
+              alt="Видео о сервере"
+              className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+            />
+            {/* Оверлей */}
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center"
+              style={{ background: `linear-gradient(135deg, ${color}20, rgba(0,0,0,0.5))` }}
+            >
+              {/* Кнопка play */}
+              <div
+                className="w-20 h-20 flex items-center justify-center border-4 mb-4 group-hover:scale-110 transition-transform"
+                style={{
+                  borderColor: color,
+                  background: `${color}30`,
+                  boxShadow: `0 0 30px ${color}60`,
+                }}
+              >
+                <div
+                  className="ml-1"
+                  style={{
+                    width: 0,
+                    height: 0,
+                    borderTop: '16px solid transparent',
+                    borderBottom: '16px solid transparent',
+                    borderLeft: `28px solid ${color}`,
+                  }}
+                />
+              </div>
+              <span className="font-pixel text-sm" style={{ color, textShadow: '2px 2px 0 #000' }}>
+                {server === 'anarchy' ? '💀 ТРЕЙЛЕР АНАРХИИ' : '🌲 ТРЕЙЛЕР КЛАССИКИ'}
+              </span>
+              <span className="font-rubik text-xs text-white/60 mt-1">Нажми, чтобы посмотреть</span>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      {/* Особенности */}
       <div className="relative z-10 container pb-20">
         <div className="flex items-center gap-3 mb-8">
           <div className="h-px flex-1" style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
@@ -90,17 +177,7 @@ export default function HomePage({ server, onGoShop }: HomePageProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {(server === 'anarchy' ? [
-            { icon: '⚔️', title: 'Полный PvP', desc: 'Без защищённых зон, кроме спавна' },
-            { icon: '💣', title: 'Гриферство', desc: 'Взрывай, воруй, разрушай — всё законно' },
-            { icon: '🏆', title: 'Топ игроков', desc: 'Рейтинг убийств и побед' },
-            { icon: '⚡', title: 'TPS 20', desc: 'Стабильный сервер без лагов' },
-          ] : [
-            { icon: '🏗️', title: 'Стройка', desc: 'Защищённые участки и WorldEdit' },
-            { icon: '💰', title: 'Экономика', desc: 'Магазины, торговля, аукцион' },
-            { icon: '👥', title: 'Кланы', desc: 'Создай свой город с друзьями' },
-            { icon: '🗺️', title: 'Карта мира', desc: 'Живая dynmap всего мира' },
-          ]).map((feat, i) => (
+          {features.map((feat, i) => (
             <div
               key={i}
               className="pixel-card p-5 animate-fade-in"
