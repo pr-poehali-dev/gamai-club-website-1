@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Анархия (огонь) — дефолт */
+    /* Анархия (огонь/красный) */
     --background: 0 0% 5%;
     --foreground: 30 100% 95%;
     --card: 0 0% 8%;
@@ -21,43 +21,41 @@
     --accent-foreground: 0 0% 5%;
     --destructive: 0 80% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
+    --border: 0 0% 22%;
     --input: 0 0% 18%;
     --ring: 20 100% 55%;
     --radius: 0rem;
     --glow: 20 100% 55%;
     --shadow: 0 0% 0%;
-
-    /* Server theme vars */
-    --theme-primary: 20 100% 55%;
-    --theme-secondary: 0 100% 40%;
-    --theme-name: "Анархия";
+    --click-particle: 255, 100, 0;
   }
 
   .theme-classic {
-    --background: 120 15% 5%;
-    --foreground: 120 30% 95%;
-    --card: 120 15% 8%;
-    --card-foreground: 120 30% 95%;
-    --popover: 120 15% 8%;
-    --popover-foreground: 120 30% 95%;
-    --primary: 120 60% 45%;
-    --primary-foreground: 0 0% 5%;
-    --secondary: 120 15% 12%;
-    --secondary-foreground: 120 30% 90%;
-    --muted: 120 15% 15%;
-    --muted-foreground: 120 15% 60%;
-    --accent: 90 60% 40%;
-    --accent-foreground: 0 0% 5%;
+    /* Классика — оранжево-янтарная тема, тёмный фон */
+    --background: 25 20% 4%;
+    --foreground: 35 90% 92%;
+    --card: 25 18% 7%;
+    --card-foreground: 35 90% 92%;
+    --popover: 25 18% 7%;
+    --popover-foreground: 35 90% 92%;
+    --primary: 32 100% 52%;
+    --primary-foreground: 25 20% 4%;
+    --secondary: 25 18% 11%;
+    --secondary-foreground: 35 80% 88%;
+    --muted: 25 15% 14%;
+    --muted-foreground: 35 20% 55%;
+    --accent: 45 100% 48%;
+    --accent-foreground: 25 20% 4%;
     --destructive: 0 80% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 120 15% 20%;
-    --input: 120 15% 18%;
-    --ring: 120 60% 45%;
-    --glow: 120 60% 45%;
-    --shadow: 120 80% 5%;
-    --theme-primary: 120 60% 45%;
-    --theme-secondary: 90 60% 35%;
+    --border: 30 20% 22%;
+    --input: 25 18% 16%;
+    --ring: 32 100% 52%;
+    --glow: 38 100% 56%;
+    --shadow: 25 80% 2%;
+    --theme-primary: 32 100% 52%;
+    --theme-secondary: 45 100% 45%;
+    --click-particle: 255, 180, 40;
   }
 }
 
@@ -71,15 +69,37 @@
   }
 }
 
-/* Пиксельный курсор — меч Minecraft */
+/* ─── Курсор: кирка Minecraft ─────────────────────────────────── */
 * {
   cursor:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect x='14' y='2' width='4' height='4' fill='%23c0c0c0'/%3E%3Crect x='10' y='6' width='4' height='4' fill='%23c0c0c0'/%3E%3Crect x='12' y='6' width='2' height='2' fill='%23e8e8e8'/%3E%3Crect x='6' y='10' width='4' height='4' fill='%23c0c0c0'/%3E%3Crect x='4' y='12' width='4' height='4' fill='%23a0a0a0'/%3E%3Crect x='2' y='14' width='4' height='4' fill='%23808080'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23d4d4d4'/%3E%3Crect x='10' y='10' width='2' height='2' fill='%23f0f0f0'/%3E%3Crect x='16' y='0' width='4' height='4' fill='%23a0522d'/%3E%3Crect x='18' y='2' width='2' height='6' fill='%23a0522d'/%3E%3C/svg%3E")
-      0 24,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='20' y='2' width='4' height='4' fill='%23b0b0b0'/%3E%3Crect x='24' y='2' width='4' height='4' fill='%23d8d8d8'/%3E%3Crect x='24' y='6' width='4' height='4' fill='%23b0b0b0'/%3E%3Crect x='16' y='6' width='4' height='4' fill='%23d8d8d8'/%3E%3Crect x='20' y='6' width='4' height='4' fill='%23f0f0f0'/%3E%3Crect x='12' y='10' width='4' height='4' fill='%23c8c8c8'/%3E%3Crect x='16' y='10' width='4' height='4' fill='%23e8e8e8'/%3E%3Crect x='8' y='14' width='4' height='4' fill='%238b6914'/%3E%3Crect x='12' y='14' width='4' height='4' fill='%23c8c8c8'/%3E%3Crect x='4' y='18' width='4' height='4' fill='%23a07820'/%3E%3Crect x='8' y='18' width='4' height='4' fill='%238b6914'/%3E%3Crect x='2' y='22' width='4' height='4' fill='%23c8a028'/%3E%3Crect x='4' y='24' width='4' height='4' fill='%23a07820'/%3E%3C/svg%3E")
+      2 30,
     crosshair;
 }
 
-/* Видеофон */
+/* ─── Клик-эффект (частицы) ───────────────────────────────────── */
+.click-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 8px;
+  height: 8px;
+  image-rendering: pixelated;
+  animation: particle-fly 0.6s ease-out forwards;
+}
+
+@keyframes particle-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.3);
+  }
+}
+
+/* ─── Видеофон ─────────────────────────────────────────────────── */
 .video-bg {
   position: fixed;
   top: 0;
@@ -110,21 +130,21 @@
   z-index: 1;
   background: linear-gradient(
     to bottom,
-    hsl(var(--background) / 0.65) 0%,
-    hsl(var(--background) / 0.45) 40%,
-    hsl(var(--background) / 0.65) 100%
+    hsl(var(--background) / 0.72) 0%,
+    hsl(var(--background) / 0.52) 40%,
+    hsl(var(--background) / 0.72) 100%
   );
 }
 
-/* Пиксельная сетка поверх */
+/* ─── Пиксельная сетка ─────────────────────────────────────────── */
 .pixel-grid {
   background-image:
-    linear-gradient(hsl(var(--glow) / 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--glow) / 0.03) 1px, transparent 1px);
+    linear-gradient(hsl(var(--glow) / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--glow) / 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
-/* Сканлайн эффект */
+/* ─── Сканлайн ─────────────────────────────────────────────────── */
 .scanlines::after {
   content: "";
   position: fixed;
@@ -143,7 +163,7 @@
   pointer-events: none;
 }
 
-/* Пиксельные карточки */
+/* ─── Пиксельные карточки ──────────────────────────────────────── */
 .pixel-card {
   @apply bg-card border-2 border-border;
   box-shadow: 4px 4px 0px hsl(var(--shadow));
@@ -156,7 +176,7 @@
   transition: all 0.15s steps(2);
 }
 
-/* Пиксельные кнопки */
+/* ─── Пиксельные кнопки ────────────────────────────────────────── */
 .pixel-btn {
   @apply font-pixel text-xs py-3 px-6;
   background: hsl(var(--primary));
@@ -179,14 +199,14 @@
   box-shadow: none;
 }
 
-/* Пиксельный текст с тенью */
+/* ─── Текст с пиксельной тенью ─────────────────────────────────── */
 .pixel-text-shadow {
   text-shadow:
     2px 2px 0px hsl(var(--shadow)),
     0 0 20px hsl(var(--glow) / 0.6);
 }
 
-/* Свечение */
+/* ─── Свечение рамки ───────────────────────────────────────────── */
 .glow-border {
   border-color: hsl(var(--glow));
   box-shadow:
@@ -194,12 +214,7 @@
     inset 0 0 10px hsl(var(--glow) / 0.05);
 }
 
-/* Аккордеон */
-.accordion-pixel [data-state="open"] {
-  border-color: hsl(var(--glow)) !important;
-}
-
-/* Анимации переходов */
+/* ─── Анимации переходов темы ──────────────────────────────────── */
 .theme-transition * {
   transition:
     background-color 0.5s ease,
