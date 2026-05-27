@@ -7,7 +7,7 @@ interface VideoBackgroundProps {
 export default function VideoBackground({ server }: VideoBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const videoId = server === 'anarchy' ? '-ioHuCZryTg' : '-ioHuCZryTg';
+  const videoId = server === 'anarchy' ? '-ioHuCZryTg' : '5QU20HMPZ3M';
 
   return (
     <>
